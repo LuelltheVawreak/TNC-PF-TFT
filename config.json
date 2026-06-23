@@ -1,0 +1,38 @@
+{
+    "paths": {
+        "macro_data": "data/merged_final.csv",
+        "province_data": "data/merged_data_final_perfect.csv",
+        "processed_data": "data/processed_data.csv",
+        "checkpoint_dir": "models/tft_checkpoints"
+    },
+    "tft_params": {
+        "max_prediction_length": 30,
+        "max_encoder_length": 90,
+        "hidden_size": 64,
+        "attention_head_size": 4,
+        "dropout": 0.1,
+        "hidden_continuous_size": 32,
+        "learning_rate": 0.03,
+        "batch_size": 64,
+        "max_epochs": 50,
+        "reduce_on_plateau_patience": 4
+    },
+    "features": {
+        "target": "robusta_vn_price",
+        "group_ids": ["province_id"],
+        "static_categoricals": ["province_id"],
+        "static_reals": ["lat", "lon"],
+        "time_varying_known_categoricals": ["is_vietnam_holiday", "month", "quarter", "day_of_week"],
+        "time_varying_known_reals": ["time_idx", "harvest_season_phase"],
+        "time_varying_unknown_reals": [
+            "robusta_vn_price",
+            "robusta_world_price",
+            "London_robusta_coffee_futures_historical",
+            "usd_vnd_rate",
+            "temp_raw",
+            "enso_oni_index",
+            "vietnam_coffee_export_volume",
+            "momentum_7d"
+        ]
+    }
+}
